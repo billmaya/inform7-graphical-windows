@@ -38,6 +38,19 @@ The measurement of the 1930-expedition window is 50.
 
 Part - Out Of World Actions
 
+graphics-mode is a truth state that varies.
+graphics-mode is false.
+
+Request graphics mode is an action out of world.
+Report request graphics mode: 
+	if graphics-mode is false:
+		now graphics-mode is true;
+	otherwise:
+		now graphics-mode is false;
+	say "GRAPHICS TURNED [if graphics-mode is false]OFF[otherwise]ON[end if]."
+
+Understand "graphics" as request graphics mode.
+
 Part - Every Turn Rules
 
 Every turn:
