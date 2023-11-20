@@ -2,7 +2,7 @@ The story title is "Graphical Windows".
 The story author is "Bill Maya".
 The story headline is "A Non-Interactive Experiment".
 
-[WORDS 596]
+[WORDS 2162]
 
 Volume - Setup
 
