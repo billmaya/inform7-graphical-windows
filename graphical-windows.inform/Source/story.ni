@@ -1,8 +1,8 @@
 The story title is "Graphical Windows".
 The story author is "Bill Maya".
-The story headline is "[if time-machine-ui is false]A Non-Interactive Experiment[otherwise]Text & Graphic Mode Experiment".
+The story headline is "[if time-machine-ui is false]A Non-Interactive Window Experiment[otherwise]Text & Graphic Mode Window Experiment".
 
-[WORDS 2221]
+[WORDS 2223]
 
 Volume - Setup
 
