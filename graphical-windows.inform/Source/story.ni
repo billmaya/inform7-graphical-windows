@@ -2,7 +2,7 @@ The story title is "Graphical Windows".
 The story author is "Bill Maya".
 The story headline is "A Non-Interactive Experiment".
 
-[WORDS 2162]
+[WORDS 2174]
 
 Volume - Setup
 
@@ -161,7 +161,9 @@ left	central	right
 " "	""	"[middle rose]"
 " "	""	"[bottom rose]"
 
-When play begins: now right alignment depth is 25;
+When play begins: 
+	if time-machine-ui is true:
+		now right alignment depth is 25;
 
 To say red reverse:
 	say special-style-1;
@@ -203,9 +205,10 @@ To say bottom rose:
 	if place is a discernible room, say "[if the place is unvisited][red reverse][end if]SE[default letters]"; otherwise say " ".
 
 Rule for constructing the status line:
-	fill status bar with Table of Fancy Status;
-	say default letters;
-	rule succeeds. 
+	if time-machine-ui is true:
+		fill status bar with Table of Fancy Status;
+		say default letters;
+		rule succeeds. 
 
 Part - Out Of World Actions
 
