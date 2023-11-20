@@ -1,6 +1,6 @@
 The story title is "Graphical Windows".
 The story author is "Bill Maya".
-The story headline is "[if time-machine-ui is false]A Non-Interactive Window Experiment[otherwise]Text & Graphic Mode Window Experiment".
+The story headline is "[if text-and-graphics-ui is false]A Non-Interactive Window Experiment[otherwise]Text & Graphic Mode Window Experiment".
 
 [WORDS 2223]
 
@@ -9,8 +9,8 @@ Volume - Setup
 Part - Extensions
 
 Include Simple Graphical Window by Emily Short. [Requires v10/161003 to display images correctly; v15/170131 of Flexible Windows]
-Include Basic Screen Effects by Emily Short.
-Include Conversation Package by Eric Eve.
+Include Basic Screen Effects by Emily Short. [Required to change status bar and display compass rose]
+Include Conversation Package by Eric Eve. [Required to avoid "interlocutor" errors (remove later)]
 
 Part - User Interface
 
@@ -21,10 +21,10 @@ Section - Setup
 debug-mode is a truth state that varies.
 debug-mode is true.
 
-time-machine-ui is a truth state that varies.
-time-machine-ui is true.
+text-and-graphics-ui is a truth state that varies.
+text-and-graphics-ui is true.
 
-[Original Experiment Configuration]
+[Non-Interactive Configuration]
 
 The map window is a graphics g-window spawned by the main window.
 The position of the map window is g-placeabove.
@@ -46,7 +46,7 @@ The position of the 1930-expedition window is g-placebelow.
 The scale method of the 1930-expedition window is g-proportional.
 The measurement of the 1930-expedition window is 50. 
 
-[Time Machine Configuration]
+[Text & Graphics Configuration]
 
 The right-sidebar window is a graphics g-window spawned by the main window.
 The position of the right-sidebar window is g-placeright.
@@ -105,7 +105,7 @@ The measurement of the debug-info window is 9.
 
 Section - Rules
 
-[Time Machine Configuration]
+[Text & Graphics Configuration]
 
 Rule for refreshing the title-characters window:
 	let X be the list of people that are not the player in the location of the player;
@@ -162,7 +162,7 @@ left	central	right
 " "	""	"[bottom rose]"
 
 When play begins: 
-	if time-machine-ui is true:
+	if text-and-graphics-ui is true:
 		now right alignment depth is 25;
 
 To say red reverse:
@@ -205,7 +205,7 @@ To say bottom rose:
 	if place is a discernible room, say "[if the place is unvisited][red reverse][end if]SE[default letters]"; otherwise say " ".
 
 Rule for constructing the status line:
-	if time-machine-ui is true:
+	if text-and-graphics-ui is true:
 		fill status bar with Table of Fancy Status;
 		say default letters;
 		rule succeeds. 
@@ -229,7 +229,7 @@ Understand "graphics" as request graphics mode.
 Part - Every Turn Rules
 
 Every turn:
-	if time-machine-ui is false:
+	if text-and-graphics-ui is false:
 		draw Figure of Antarctic in map window;
 		draw Figure of Miskatonic-1907 in 1907-expedition window;
 		draw Figure of Miskatonic-1926 in 1926-expedition window;
@@ -248,8 +248,6 @@ Every turn (this is the Update Debug rule):
 		say "GRAPHICS: [graphics-mode]";
 		focus main window.
 
-		
-
 Part - Release
 
 Release along with a website and an interpreter.
@@ -263,7 +261,7 @@ Volume - Beginning The Story
 
 When play begins:
 	close the graphics window; [Since we're not using this window]
-	if time-machine-ui is false:
+	if text-and-graphics-ui is false:
 		open the map window;
 		open the 1907-expedition window;
 		open the 1926-expedition window;
@@ -309,6 +307,8 @@ Down Below is a room. Down Below is down from the Map Room.
 
 Volume - Figures
 
+Book - Non-Interactive Images
+
 Figure of Antarctic is the file "Stielers-Handatlas-1891-Antarctic.jpg".
 Figure of Miskatonic-1907 is the file "Miskatonic-Tunguska-Expedition-1907.jpg".
 Figure of MIskatonic-1926 is the file "Miskatonic-Outer-Tibet-Expedition-1926.jpg".
@@ -317,3 +317,6 @@ Figure of HP-Lovecraft is the file "HP-Lovecraft-1934.jpg".
 Figure of Clemente-Onelli is the file "Clemente-Onelli.png".
 Figure of Alice-Wilson is the file "Alice-Wilson.png".
 Figure of Cystoidea is the file "Hunstformen-der-Natur-Cystoidea.jpg"
+
+Book - Text & Graphics Images
+
