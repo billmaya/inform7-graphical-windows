@@ -2,7 +2,7 @@ The story title is "Graphical Windows".
 The story author is "Bill Maya".
 The story headline is "[if text-and-graphics-ui is false]A Non-Interactive Window Experiment[otherwise]Text & Graphic Mode Window Experiment".
 
-[WORDS 2257]
+[WORDS 2331]
 
 Volume - Setup
 
@@ -52,6 +52,11 @@ The right-sidebar window is a graphics g-window spawned by the main window.
 The position of the right-sidebar window is g-placeright.
 The scale method of the right-sidebar window is g-fixed-size.
 The measurement of the right-sidebar window is 290.
+
+The graphics-upper-right window is a graphics g-window spawned by the right-sidebar window.
+The position of the graphics-upper-right window is g-placeabove.
+The scale method of the graphics-upper-right window is g-fixed-size.
+the measurement of the graphics-upper-right window is 250.
 
 The title-characters window is a text grid g-window spawned by the right-sidebar window.
 The position of the title-characters window is g-placeabove.
@@ -277,6 +282,7 @@ When play begins:
 		focus main window;
 	otherwise:
 		open right-sidebar window;
+		open graphics-upper-right window; [TEST]
 		open title-inventory window;
 		open list-inventory window;
 		open title-characters window;
@@ -286,7 +292,8 @@ When play begins:
 		if debug-mode is true:
 			open debug-title window;
 			open debug-info window;
-			follow Update Debug rule.
+			follow Update Debug rule;
+		draw Figure of Weena in graphics-upper-right window.
 
 Volume - Settings
 
@@ -320,3 +327,4 @@ Figure of Cystoidea is the file "Hunstformen-der-Natur-Cystoidea.jpg"
 
 Book - Text & Graphics Images
 
+Figure of Weena is the file "weena-0.png".
