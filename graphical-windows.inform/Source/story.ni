@@ -6,17 +6,17 @@ The story headline is "[if text-and-graphics-ui is false]A Non-Interactive Windo
 
 Volume - Setup
 
-Part - Extensions
+Book - Extensions
 
 Include Simple Graphical Window by Emily Short. [Requires v10/161003 to display images correctly; v15/170131 of Flexible Windows]
 Include Basic Screen Effects by Emily Short. [Required to change status bar and display compass rose]
 Include Conversation Package by Eric Eve. [Required to avoid "interlocutor" errors (remove later)]
 
-Part - User Interface
+Book - User Interface
 
-Chapter - Windows
+Part - Windows
 
-Section - Setup
+Chapter - Setup
 
 debug-mode is a truth state that varies.
 debug-mode is true.
@@ -24,7 +24,7 @@ debug-mode is true.
 text-and-graphics-ui is a truth state that varies.
 text-and-graphics-ui is true.
 
-[Non-Interactive Configuration]
+Section - Non-Interactive Configuration
 
 The map window is a graphics g-window spawned by the main window.
 The position of the map window is g-placeabove.
@@ -46,7 +46,7 @@ The position of the 1930-expedition window is g-placebelow.
 The scale method of the 1930-expedition window is g-proportional.
 The measurement of the 1930-expedition window is 50. 
 
-[Text & Graphics Configuration]
+Section - Text & Graphics Configuration
 
 The right-sidebar window is a graphics g-window spawned by the main window.
 The position of the right-sidebar window is g-placeright.
@@ -103,9 +103,9 @@ The position of the debug-info window is g-placeabove.
 The scale method of the debug-info window is g-fixed-size.
 The measurement of the debug-info window is 9.
 
-Section - Rules
+Chapter - Rules
 
-[Text & Graphics Configuration]
+Section - Text & Graphics Configuration
 
 Rule for refreshing the title-characters window:
 	let X be the list of people that are not the player in the location of the player;
@@ -146,7 +146,7 @@ Rule for refreshing the list-inventory window:
 Rule for refreshing the debug-title window:
 	say "DEBUG".
 
-Part - Status Line
+Book - Status Line
 
 [The original code was taken from the Improved Status Line section of "Bronze" by Emily Short and modified slightly. 
  See https://i7-examples.github.io/Bronze/source_43.html for the original code.]
@@ -210,7 +210,7 @@ Rule for constructing the status line:
 		say default letters;
 		rule succeeds. 
 
-Part - Out Of World Actions
+Book - Out Of World Actions
 
 graphics-mode is a truth state that varies.
 graphics-mode is false.
@@ -226,7 +226,7 @@ Report request graphics mode:
 
 Understand "graphics" as request graphics mode.
 
-Part - Every Turn Rules
+Book - Every Turn Rules
 
 Every turn:
 	if text-and-graphics-ui is false:
@@ -248,7 +248,7 @@ Every turn (this is the Update Debug rule):
 		say "GRAPHICS: [graphics-mode]";
 		focus main window.
 
-Part - Release
+Book - Release
 
 Release along with a website and an interpreter.
 
