@@ -2,7 +2,7 @@ The story title is "Graphical Windows".
 The story author is "Bill Maya".
 The story headline is "A Non-Interactive Experiment".
 
-[WORDS 2174]
+[WORDS 2210]
 
 Volume - Setup
 
@@ -221,7 +221,8 @@ Report request graphics mode:
 		now graphics-mode is true;
 	otherwise:
 		now graphics-mode is false;
-	say "GRAPHICS TURNED [if graphics-mode is false]OFF[otherwise]ON[end if]."
+	[say "GRAPHICS TURNED [if graphics-mode is false]OFF[otherwise]ON[end if].";]
+	follow Update Debug rule.
 
 Understand "graphics" as request graphics mode.
 
@@ -239,6 +240,14 @@ Every turn:
 		draw Figure of Cystoidea in the map window at x 630 and y 30 scaled to width 275 and height 400;
 		focus main window;
 	[otherwise:]
+
+Every turn (this is the Update Debug rule):
+	if debug-mode is true: 
+		focus debug-info window;
+		clear debug-info window;
+		say "GRAPHICS: [graphics-mode]";
+		focus main window.
+
 		
 
 Part - Release
@@ -279,6 +288,7 @@ When play begins:
 		if debug-mode is true:
 			open debug-title window;
 			open debug-info window;
+			follow Update Debug rule.
 
 Volume - Settings
 
