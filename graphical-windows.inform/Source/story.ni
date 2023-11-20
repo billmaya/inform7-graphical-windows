@@ -24,6 +24,9 @@ debug-mode is true.
 text-and-graphics-ui is a truth state that varies.
 text-and-graphics-ui is true.
 
+graphics-mode is a truth state that varies.
+graphics-mode is true.
+
 Section - Non-Interactive Configuration
 
 The map window is a graphics g-window spawned by the main window.
@@ -217,13 +220,12 @@ Rule for constructing the status line:
 
 Book - Out Of World Actions
 
-graphics-mode is a truth state that varies.
-graphics-mode is false.
-
 Request graphics mode is an action out of world.
 Report request graphics mode: 
 	if graphics-mode is false:
 		now graphics-mode is true;
+		[open graphics-upper-right window;
+		draw Figure of Weena in graphics-upper-right window;]
 	otherwise:
 		now graphics-mode is false;
 	[say "GRAPHICS TURNED [if graphics-mode is false]OFF[otherwise]ON[end if].";]
@@ -244,7 +246,9 @@ Every turn:
 		draw Figure of Alice-Wilson in the map window at x 50 and y 500;
 		draw Figure of Cystoidea in the map window at x 630 and y 30 scaled to width 275 and height 400;
 		focus main window;
-	[otherwise:]
+	otherwise:
+		draw Figure of Weena in graphics-upper-right window;
+		focus main window;		
 
 Every turn (this is the Update Debug rule):
 	if debug-mode is true: 
@@ -281,23 +285,33 @@ When play begins:
 		draw Figure of Cystoidea in the map window at x 630 and y 30 scaled to width 275 and height 400;
 		focus main window;
 	otherwise:
-		open right-sidebar window;
-		open graphics-upper-right window; [TEST]
-		open title-inventory window;
-		open list-inventory window;
-		open title-characters window;
-		open list-characters window;
-		open title-topics window;
-		open character-topics window;
+		if graphics-mode is false:
+			open right-sidebar window;
+			open title-inventory window;
+			open list-inventory window;
+			open title-characters window;
+			open list-characters window;
+			open title-topics window;
+			open character-topics window;
+		otherwise:
+			open right-sidebar window;
+			open graphics-upper-right window;
+			open title-inventory window;
+			open list-inventory window;
+			open title-characters window;
+			open list-characters window;
+			open title-topics window;
+			open character-topics window;
 		if debug-mode is true:
 			open debug-title window;
 			open debug-info window;
 			follow Update Debug rule;
-		draw Figure of Weena in graphics-upper-right window.
 
 Volume - Settings
 
 Map Room is a room. 
+The description of the Map Room is "This is a large room whose walls are covered in ancient and modern maps of all shapes and sizes."
+Before looking in the Map Room: display the Figure of Map-Room-0a.
 
 To The North is a room. To The North is north of the Map Room.
 To The South is a room. To The South is south of the Map Room.
@@ -323,8 +337,13 @@ Figure of Miskatonic-1930 is the file "Miskatonic-Antarctic-Expedition-1930.jpg"
 Figure of HP-Lovecraft is the file "HP-Lovecraft-1934.jpg".
 Figure of Clemente-Onelli is the file "Clemente-Onelli.png".
 Figure of Alice-Wilson is the file "Alice-Wilson.png".
-Figure of Cystoidea is the file "Hunstformen-der-Natur-Cystoidea.jpg"
+Figure of Cystoidea is the file "Hunstformen-der-Natur-Cystoidea.jpg".
 
 Book - Text & Graphics Images
 
 Figure of Weena is the file "weena-0.png".
+Figure of Map-Room-0 is the file "map-room-0.png".
+Figure of Map-Room-0a is the file "map-room-0a.png".
+Figure of Map-Room-1 is the file "map-room-1.png".
+Figure of Map-Room-1a is the file "map-room-1a.png".
+
