@@ -2,7 +2,7 @@ The story title is "Graphical Windows".
 The story author is "Bill Maya".
 The story headline is "[if text-and-graphics-ui is false]A Non-Interactive Window Experiment[otherwise]Text & Graphic Mode Window Experiment".
 
-[WORDS 2331]
+[WORDS 2917]
 
 Volume - Setup
 
@@ -116,16 +116,16 @@ Chapter - Rules
 Section - Text & Graphics Configuration
 
 Rule for refreshing the title-characters window:
-	let X be the list of people that are not the player in the location of the player;
-	if  X is not empty:
+	let people-in-room be the list of people that are not the player in the location of the player;
+	if  people-in-room is not empty:
 		say "People You Can Talk To By[line break]Saying 'Hello' To Them";
 	otherwise:
 		say "".
 
 Rule for refreshing the list-characters window:
-	let X be the list of people that are not the player in location of player;
-	if X is not empty:
-		say "[X]";
+	let people-in-room be the list of people that are not the player in location of player;
+	if people-in-room is not empty:
+		say "[people-in-room]";
 	otherwise:
 		say "".
 
@@ -166,7 +166,7 @@ all-grid-windows	special-style-1	"#FFFFFF" ["#FF0000" - Red]
 Table of Fancy Status
 left	central	right
 " [if in darkness]Darkness[otherwise][location][end if]"	""	"[top rose]"
-" "	""	"[middle rose]"
+" [if the place of the location of the player is past]1895[otherwise]802,701[end if]"	""	"[middle rose]"
 " "	""	"[bottom rose]"
 
 When play begins: 
@@ -224,19 +224,20 @@ Request graphics mode is an action out of world.
 Report request graphics mode: 
 	if graphics-mode is false:
 		now graphics-mode is true;
-		[open graphics-upper-right window;
-		draw Figure of Weena in graphics-upper-right window;]
 	otherwise:
 		now graphics-mode is false;
-	[say "GRAPHICS TURNED [if graphics-mode is false]OFF[otherwise]ON[end if].";]
 	follow Update Debug rule.
 
 Understand "graphics" as request graphics mode.
 
 Book - Every Turn Rules
 
+Part - User Interface
+
 Every turn:
-	if text-and-graphics-ui is false:
+	if text-and-graphics-ui is true:
+		focus main window;
+	otherwise:
 		draw Figure of Antarctic in map window;
 		draw Figure of Miskatonic-1907 in 1907-expedition window;
 		draw Figure of Miskatonic-1926 in 1926-expedition window;
@@ -246,15 +247,39 @@ Every turn:
 		draw Figure of Alice-Wilson in the map window at x 50 and y 500;
 		draw Figure of Cystoidea in the map window at x 630 and y 30 scaled to width 275 and height 400;
 		focus main window;
-	otherwise:
-		draw Figure of Weena in graphics-upper-right window;
-		focus main window;		
+		
+Every turn (this is the Display Characters rule):
+	if text-and-graphics-ui is true:
+		let people-in-room be the list of people that are not the player in the location of the player;
+		if people-in-room is not empty:
+			if entry 1 of people-in-room is Weena, draw Figure of Weena in graphics-upper-right window;
+			if entry 1 of people-in-room is Humboldt, draw Figure of Humboldt in graphics-upper-right window;
+			if entry 1 of people-in-room is Gernsback, draw Figure of Gernsback in graphics-upper-right window;
+		otherwise:
+			if the place of the location of the player is past, draw Figure of London-1895 in graphics-upper-right window;
+			if the place of the location of the player is future, draw Figure of 802701 in graphics-upper-right window;
+		focus main window;
+				
+Every turn (this is the Refresh Windows rule):
+	if text-and-graphics-ui is true:
+		refresh the title-characters window;
+		refresh the list-characters window;
+		refresh the title-talking-to window;
+		refresh the talking-to-character window;
+		refresh the title-topics window;
+		refresh the character-topics window;
+		refresh the list-inventory window;
+		follow Display Characters rule.
+
+Chapter - Debug
 
 Every turn (this is the Update Debug rule):
 	if debug-mode is true: 
 		focus debug-info window;
 		clear debug-info window;
-		say "GRAPHICS: [graphics-mode]";
+		say "GRAPHICS: [graphics-mode][line break]";
+		let people-in-room be the list of people that are not the player in the location of the player;
+		say "PEOPLE-IN-ROOM: [if people-in-room is not empty][people-in-room][otherwise]none[end if][line break]";
 		focus main window.
 
 Book - Release
@@ -267,6 +292,8 @@ Before starting the virtual machine:
 ]
 
 Volume - Beginning The Story
+
+The player is in the Map Room.
 
 When play begins:
 	close the graphics window; [Since we're not using this window]
@@ -302,6 +329,9 @@ When play begins:
 			open list-characters window;
 			open title-topics window;
 			open character-topics window;
+			focus graphics-upper-right window;
+			follow Display Characters rule;
+			focus main window;
 		if debug-mode is true:
 			open debug-title window;
 			open debug-info window;
@@ -309,22 +339,78 @@ When play begins:
 
 Volume - Settings
 
+Book - General
+
+Time period is a kind of value.
+The time periods are none, past, and future.
+
+A room has a time period called place.
+The place of a room is usually none.
+
+Book - Rooms
+
+Part - Map Room
+
 Map Room is a room. 
 The description of the Map Room is "This is a large room whose walls are covered in ancient and modern maps of all shapes and sizes."
+The place of the Map Room is past.
+
 Before looking in the Map Room: display the Figure of Map-Room-0a.
 
-To The North is a room. To The North is north of the Map Room.
-To The South is a room. To The South is south of the Map Room.
-To The West is a room. To The West is west of the Map Room.
-To The East is a room. To The East is east of the Map Room.
+Part - Library
 
-To The Northeast is a room. To The Northeast is northeast of the Map Room.
-To The Northwest is a room. To The Northwest is northwest of the Map Room.
-To The Southeast is a room. To The Southeast is southeast of the Map Room.
-To The Southwest is a room. To The Southwest is southwest of the Map Room.
+The Library is a room. 
+The Library is north of the Map Room.
+The place of the Library is past.
 
-Up Above is a room. Up Above is up from the Map Room.
-Down Below is a room. Down Below is down from the Map Room.
+Before looking in the Library: display the Figure of Library-3a.
+
+Part - Workshop
+
+The Workshop is a room. 
+The Workshop is west of the Map Room.
+The place of the Workshop is past.
+
+Before looking in the Workshop: display the Figure of Workshop-1a.
+
+Part - Domed Building
+
+The Domed Building is a room.
+The Domed Building is south of the Map Room.
+The place of the Domed Building is future.
+
+Before looking in the Domed Building: display the Figure of Domed-Building-3a.
+
+Part - Cavern
+
+The Cavern is a room. 
+The Cavern is east from the Domed Building.
+The place of the Cavern is future.
+
+Before looking in the Cavern: display the Figure of Cavern-1a.
+
+Volume - Characters
+
+Book - Weena
+
+Weena is a person.
+Weena is in the Domed Building.
+
+Book - Humboldt
+
+Humboldt is a person.
+Humboldt is in the Workshop.
+
+Book - Gernsback
+
+Gernsback is a person.
+Gernsback is in the Library.
+
+Volume - Things
+
+Book - Orrery
+
+
 
 Volume - Figures
 
@@ -341,9 +427,27 @@ Figure of Cystoidea is the file "Hunstformen-der-Natur-Cystoidea.jpg".
 
 Book - Text & Graphics Images
 
-Figure of Weena is the file "weena-0.png".
+Figure of London-1895 is the file "silhouette-london-1895-3.png".
+Figure of 802701 is the file "silhouette-802701-0.png".
+
 Figure of Map-Room-0 is the file "map-room-0.png".
 Figure of Map-Room-0a is the file "map-room-0a.png".
 Figure of Map-Room-1 is the file "map-room-1.png".
 Figure of Map-Room-1a is the file "map-room-1a.png".
+
+Figure of Workshop-1 is the file "workshop-1.png".
+Figure of Workshop-1a is the file "workshop-1a.png".
+
+Figure of Library-3 is the file "library-3.png".
+Figure of Library-3a is the file "library-3a.png".
+
+Figure of Domed-Building-3 is the file "domed-building-3.png".
+Figure of Domed-Building-3a is the file "domed-building-3a.png".
+
+Figure of Cavern-1 is the file "cavern-1.png".
+Figure of Cavern-1a is the file "cavern-1a.png".
+
+Figure of Weena is the file "weena-0.png".
+Figure of Humboldt is the file "humboldt-3.png".
+Figure of Gernsback is the file "gernsback-3.png".
 
