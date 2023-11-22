@@ -1,8 +1,8 @@
 The story title is "Graphical Windows".
 The story author is "Bill Maya".
-The story headline is "[if text-and-graphics-ui is false]A Non-Interactive Window Experiment[otherwise]Text & Graphic Mode Window Experiment".
+The story headline is "[if text-and-graphics-ui is false]A Non-Interactive Window Experiment[otherwise]A Text & Graphic Mode Window Experiment".
 
-[WORDS 2917]
+[WORDS 3043]
 
 Volume - Setup
 
@@ -280,6 +280,7 @@ Every turn (this is the Update Debug rule):
 		say "GRAPHICS: [graphics-mode][line break]";
 		let people-in-room be the list of people that are not the player in the location of the player;
 		say "PEOPLE-IN-ROOM: [if people-in-room is not empty][people-in-room][otherwise]none[end if][line break]";
+		say "TIME: [time of day][line break]";
 		focus main window.
 
 Book - Release
@@ -294,6 +295,8 @@ Before starting the virtual machine:
 Volume - Beginning The Story
 
 The player is in the Map Room.
+
+The Display Map Room Illustration rule does nothing when time of day is 9:00 am. [To avoid printing the Map Room illustration twice at start.]
 
 When play begins:
 	close the graphics window; [Since we're not using this window]
@@ -355,13 +358,17 @@ Map Room is a room.
 The description of the Map Room is "This is a large room whose walls are covered in ancient and modern maps of all shapes and sizes."
 The place of the Map Room is past.
 
+First carry out looking in the Map Room (this is the Display Map Room Illustration rule): display the Figure of Map-Room-0a.
+
 Before looking in the Map Room: display the Figure of Map-Room-0a.
 
 Part - Library
 
-The Library is a room. 
+The Library is a room. "This is the library."
 The Library is north of the Map Room.
 The place of the Library is past.
+
+First carry out looking in the Library: display the Figure of Library-3a. [https://bit.ly/3SMGNE4]
 
 Before looking in the Library: display the Figure of Library-3a.
 
@@ -371,6 +378,8 @@ The Workshop is a room.
 The Workshop is west of the Map Room.
 The place of the Workshop is past.
 
+First carry out looking in the Workshop: display the Figure of Workshop-1a.
+
 Before looking in the Workshop: display the Figure of Workshop-1a.
 
 Part - Domed Building
@@ -379,6 +388,8 @@ The Domed Building is a room.
 The Domed Building is south of the Map Room.
 The place of the Domed Building is future.
 
+First carry out looking in the Domed Building: display the Figure of Domed-Building-3a.
+
 Before looking in the Domed Building: display the Figure of Domed-Building-3a.
 
 Part - Cavern
@@ -386,6 +397,8 @@ Part - Cavern
 The Cavern is a room. 
 The Cavern is east from the Domed Building.
 The place of the Cavern is future.
+
+First carry out looking in the Cavern: display the Figure of Cavern-1a.
 
 Before looking in the Cavern: display the Figure of Cavern-1a.
 
@@ -426,6 +439,8 @@ Figure of Alice-Wilson is the file "Alice-Wilson.png".
 Figure of Cystoidea is the file "Hunstformen-der-Natur-Cystoidea.jpg".
 
 Book - Text & Graphics Images
+
+[Figure of Nothing is the file "empty-image.png".]
 
 Figure of London-1895 is the file "silhouette-london-1895-3.png".
 Figure of 802701 is the file "silhouette-802701-0.png".
