@@ -277,7 +277,7 @@ Every turn (this is the Update Debug rule):
 	if debug-mode is true: 
 		focus debug-info window;
 		clear debug-info window;
-		say "GRAPHICS: [graphics-mode][line break]";
+		say "GRAPHICS MODE: [graphics-mode][line break]";
 		let people-in-room be the list of people that are not the player in the location of the player;
 		say "PEOPLE-IN-ROOM: [if people-in-room is not empty][people-in-room][otherwise]none[end if][line break]";
 		say "TIME: [time of day][line break]";
@@ -353,7 +353,8 @@ Book - Figures
 A room has an figure name called illustration.
 
 First carry out looking when the illustration of the location is not Figure of cover (this is the Display Illustration rule):
-	display the illustration of the location.
+	if graphics-mode is true:
+		display the illustration of the location.
 
 Part - Non-Interactive Images
 
