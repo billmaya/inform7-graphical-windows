@@ -2,7 +2,7 @@ The story title is "Graphical Windows".
 The story author is "Bill Maya".
 The story headline is "[if text-and-graphics-ui is false]A Non-Interactive Window Experiment[otherwise]A Text & Graphic Mode Window Experiment".
 
-[WORDS 3043]
+[WORDS 2954]
 
 Volume - Setup
 
@@ -296,8 +296,6 @@ Volume - Beginning The Story
 
 The player is in the Map Room.
 
-The Display Map Room Illustration rule does nothing when time of day is 9:00 am. [To avoid printing the Map Room illustration twice at start.]
-
 When play begins:
 	close the graphics window; [Since we're not using this window]
 	if text-and-graphics-ui is false:
@@ -350,84 +348,14 @@ The time periods are none, past, and future.
 A room has a time period called place.
 The place of a room is usually none.
 
-Book - Rooms
+Book - Figures
 
-Part - Map Room
+A room has an figure name called illustration.
 
-Map Room is a room. 
-The description of the Map Room is "This is a large room whose walls are covered in ancient and modern maps of all shapes and sizes."
-The place of the Map Room is past.
+First carry out looking when the illustration of the location is not Figure of cover (this is the Display Illustration rule):
+	display the illustration of the location.
 
-First carry out looking in the Map Room (this is the Display Map Room Illustration rule): display the Figure of Map-Room-0a.
-
-Before looking in the Map Room: display the Figure of Map-Room-0a.
-
-Part - Library
-
-The Library is a room. "This is the library."
-The Library is north of the Map Room.
-The place of the Library is past.
-
-First carry out looking in the Library: display the Figure of Library-3a. [https://bit.ly/3SMGNE4]
-
-Before looking in the Library: display the Figure of Library-3a.
-
-Part - Workshop
-
-The Workshop is a room. 
-The Workshop is west of the Map Room.
-The place of the Workshop is past.
-
-First carry out looking in the Workshop: display the Figure of Workshop-1a.
-
-Before looking in the Workshop: display the Figure of Workshop-1a.
-
-Part - Domed Building
-
-The Domed Building is a room.
-The Domed Building is south of the Map Room.
-The place of the Domed Building is future.
-
-First carry out looking in the Domed Building: display the Figure of Domed-Building-3a.
-
-Before looking in the Domed Building: display the Figure of Domed-Building-3a.
-
-Part - Cavern
-
-The Cavern is a room. 
-The Cavern is east from the Domed Building.
-The place of the Cavern is future.
-
-First carry out looking in the Cavern: display the Figure of Cavern-1a.
-
-Before looking in the Cavern: display the Figure of Cavern-1a.
-
-Volume - Characters
-
-Book - Weena
-
-Weena is a person.
-Weena is in the Domed Building.
-
-Book - Humboldt
-
-Humboldt is a person.
-Humboldt is in the Workshop.
-
-Book - Gernsback
-
-Gernsback is a person.
-Gernsback is in the Library.
-
-Volume - Things
-
-Book - Orrery
-
-
-
-Volume - Figures
-
-Book - Non-Interactive Images
+Part - Non-Interactive Images
 
 Figure of Antarctic is the file "Stielers-Handatlas-1891-Antarctic.jpg".
 Figure of Miskatonic-1907 is the file "Miskatonic-Tunguska-Expedition-1907.jpg".
@@ -438,9 +366,7 @@ Figure of Clemente-Onelli is the file "Clemente-Onelli.png".
 Figure of Alice-Wilson is the file "Alice-Wilson.png".
 Figure of Cystoidea is the file "Hunstformen-der-Natur-Cystoidea.jpg".
 
-Book - Text & Graphics Images
-
-[Figure of Nothing is the file "empty-image.png".]
+Part - Text & Graphics Images
 
 Figure of London-1895 is the file "silhouette-london-1895-3.png".
 Figure of 802701 is the file "silhouette-802701-0.png".
@@ -465,4 +391,67 @@ Figure of Cavern-1a is the file "cavern-1a.png".
 Figure of Weena is the file "weena-0.png".
 Figure of Humboldt is the file "humboldt-3.png".
 Figure of Gernsback is the file "gernsback-3.png".
+
+
+Book - Rooms
+
+Part - Map Room
+
+Map Room is a room. 
+The description of the Map Room is "This is a large room whose walls are covered in ancient and modern maps of all shapes and sizes."
+The place of the Map Room is past.
+The illustration of Map Room is Figure of Map-Room-0a.
+
+Part - Library
+
+The Library is a room. "This is the library."
+The Library is north of the Map Room.
+The place of the Library is past.
+The illustration of Library is Figure of Library-3a.
+
+Part - Workshop
+
+The Workshop is a room. 
+The Workshop is west of the Map Room.
+The place of the Workshop is past.
+The illustration of Workshop is Figure of Workshop-1a.
+
+Part - Domed Building
+
+The Domed Building is a room.
+The Domed Building is south of the Map Room.
+The place of the Domed Building is future.
+The illustration of Domed Building is Figure of Domed-Building-3a.
+
+Part - Cavern
+
+The Cavern is a room. 
+The Cavern is east from the Domed Building.
+The place of the Cavern is future.
+The illustration of Cavern is Figure of Cavern-1a.
+
+Volume - Characters
+
+Book - Weena
+
+Weena is a person.
+Weena is in the Domed Building.
+
+Book - Humboldt
+
+Humboldt is a person.
+Humboldt is in the Workshop.
+
+Book - Gernsback
+
+Gernsback is a person.
+Gernsback is in the Library.
+
+Volume - Things
+
+Book - Orrery
+
+
+
+
 
