@@ -156,9 +156,6 @@ Rule for refreshing the debug-title window:
 
 Book - Status Line
 
-[The original code was taken from the Improved Status Line section of "Bronze" by Emily Short and modified slightly. 
- See https://i7-examples.github.io/Bronze/source_43.html for the original code.]
-
 Table of User Styles (continued)
 window	style name	background color
 all-grid-windows	special-style-1	"#FFFFFF" ["#FF0000" - Red]
@@ -355,6 +352,12 @@ A room has an figure name called illustration.
 First carry out looking when the illustration of the location is not Figure of cover (this is the Display Illustration rule):
 	if graphics-mode is true:
 		display the illustration of the location.
+		
+A thing has a figure name called illustration.
+
+Before examining the noun: 
+	if graphics-mode is true:
+		display the illustration of the noun.
 
 Part - Non-Interactive Images
 
@@ -393,6 +396,8 @@ Figure of Weena is the file "weena-0.png".
 Figure of Humboldt is the file "humboldt-3.png".
 Figure of Gernsback is the file "gernsback-3.png".
 
+Figure of Orrery is the file "orrery-0a.png".
+Figure of Book is the file "book-0a.jpg".
 
 Book - Rooms
 
@@ -452,7 +457,12 @@ Volume - Things
 
 Book - Orrery
 
+The orrery is a thing.
+The orrery is in the Map Room.
+The illustration of the orrery is Figure of Orrery.
 
+Book - Book
 
-
-
+The book is a thing.
+The book is in the Library.
+The illustration of the book is Figure of Book.
