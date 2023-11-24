@@ -2,7 +2,7 @@ The story title is "Graphical Windows".
 The story author is "Bill Maya".
 The story headline is "[if text-and-graphics-ui is false]A Non-Interactive Window Experiment[otherwise]A Text & Graphic Mode Window Experiment".
 
-[WORDS 3094]
+[WORDS 3131]
 
 Volume - Setup
 
@@ -440,6 +440,13 @@ The Cavern is a room.
 The Cavern is east from the Domed Building.
 The place of the Cavern is future.
 The illustration of Cavern is Figure of Cavern-1a.
+
+Part - Room Without An Image
+
+The Void is a room.
+The description of Void is "This room has no illustration to display."
+The Void is east of the Map Room.
+The place of the Void is past.
 
 Volume - Characters
 
