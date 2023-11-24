@@ -386,6 +386,8 @@ Figure of Workshop-1a is the file "workshop-1a.png".
 Figure of Library-3 is the file "library-3.png".
 Figure of Library-3a is the file "library-3a.png".
 
+Figure of Time-Travel is the file "time-travel-2a.png".
+
 Figure of Domed-Building-3 is the file "domed-building-3.png".
 Figure of Domed-Building-3a is the file "domed-building-3a.png".
 
@@ -407,6 +409,9 @@ Map Room is a room.
 The description of the Map Room is "This is a large room whose walls are covered in ancient and modern maps of all shapes and sizes."
 The place of the Map Room is past.
 The illustration of Map Room is Figure of Map-Room-0a.
+
+Before going south in the Map Room:
+	now time-traveling is true.
 
 Part - Library
 
@@ -453,6 +458,8 @@ Book - Gernsback
 Gernsback is a person.
 Gernsback is in the Library.
 
+
+
 Volume - Things
 
 Book - Orrery
@@ -466,3 +473,24 @@ Book - Book
 The book is a thing.
 The book is in the Library.
 The illustration of the book is Figure of Book.
+
+Volume - Scenes
+
+time-traveling is a truth state that varies.
+time-traveling is false.
+
+Book - Time Travel
+
+Time Travel is a recurring scene.
+
+Time Travel begins when time-traveling is true.
+
+When Time Travel begins:
+	now time-traveling is false;
+	say "TIME TRAVEL BEGINS.";
+	display Figure of Time-Travel;
+
+Time Travel ends when the player is in the Domed Building.
+
+When Time Travel ends:
+	say "TIME TRAVEL ENDS."
