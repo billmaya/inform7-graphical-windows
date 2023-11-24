@@ -118,7 +118,7 @@ Section - Text & Graphics Configuration
 Rule for refreshing the title-characters window:
 	let people-in-room be the list of people that are not the player in the location of the player;
 	if  people-in-room is not empty:
-		say "People You Can Talk To By[line break]Saying 'Hello' To Them";
+		say "People In The Room";
 	otherwise:
 		say "".
 
