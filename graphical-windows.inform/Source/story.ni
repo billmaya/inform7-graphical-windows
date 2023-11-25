@@ -2,7 +2,7 @@ The story title is "Graphical Windows".
 The story author is "Bill Maya".
 The story headline is "[if text-and-graphics-ui is false]A Non-Interactive Window Experiment[otherwise]A Text & Graphic Mode Window Experiment".
 
-[WORDS 3250]
+[WORDS 3303]
 
 Volume - Setup
 
@@ -153,6 +153,21 @@ Rule for refreshing the list-inventory window:
 
 Rule for refreshing the debug-title window:
 	say "DEBUG".
+	
+Rule for refreshing the graphics-upper-right window:
+	if graphics-mode is true:
+		let people-in-room be the list of people that are not the player in the location of the player;
+		if people-in-room is not empty:
+			if entry 1 of people-in-room is Weena, draw Figure of Weena in graphics-upper-right window;
+			if entry 1 of people-in-room is Humboldt, draw Figure of Humboldt in graphics-upper-right window;
+			if entry 1 of people-in-room is Gernsback, draw Figure of Gernsback in graphics-upper-right window;
+		otherwise:
+			if the place of the location of the player is past, draw Figure of London-1895 in graphics-upper-right window;
+			if the place of the location of the player is future, draw Figure of 802701 in graphics-upper-right window;
+	otherwise:
+		if the place of the location of the player is past, draw Figure of London-1895 in graphics-upper-right window;
+		if the place of the location of the player is future, draw Figure of 802701 in graphics-upper-right window;
+	focus main window;
 
 Book - Status Line
 
@@ -245,18 +260,6 @@ Every turn:
 		draw Figure of Cystoidea in the map window at x 630 and y 30 scaled to width 275 and height 400;
 		focus main window;
 		
-Every turn (this is the Display Characters rule):
-	if text-and-graphics-ui is true:
-		let people-in-room be the list of people that are not the player in the location of the player;
-		if people-in-room is not empty:
-			if entry 1 of people-in-room is Weena, draw Figure of Weena in graphics-upper-right window;
-			if entry 1 of people-in-room is Humboldt, draw Figure of Humboldt in graphics-upper-right window;
-			if entry 1 of people-in-room is Gernsback, draw Figure of Gernsback in graphics-upper-right window;
-		otherwise:
-			if the place of the location of the player is past, draw Figure of London-1895 in graphics-upper-right window;
-			if the place of the location of the player is future, draw Figure of 802701 in graphics-upper-right window;
-		focus main window;
-				
 Every turn (this is the Refresh Windows rule):
 	if text-and-graphics-ui is true:
 		refresh the title-characters window;
@@ -266,7 +269,7 @@ Every turn (this is the Refresh Windows rule):
 		refresh the title-topics window;
 		refresh the character-topics window;
 		refresh the list-inventory window;
-		follow Display Characters rule.
+		refresh the graphics-upper-right window;
 
 Chapter - Debug
 
@@ -327,8 +330,7 @@ When play begins:
 			open list-characters window;
 			open title-topics window;
 			open character-topics window;
-			focus graphics-upper-right window;
-			follow Display Characters rule;
+			refresh the graphics-upper-right window;
 			focus main window;
 		if debug-mode is true:
 			open debug-title window;
@@ -356,8 +358,9 @@ First carry out looking when the illustration of the location is not Figure of c
 A thing has a figure name called illustration.
 
 Before examining the noun: 
-	if graphics-mode is true:
-		display the illustration of the noun.
+	if the noun is not a person:
+		if graphics-mode is true:
+			display the illustration of the noun.
 
 Part - Non-Interactive Images
 
@@ -412,7 +415,6 @@ The illustration of Map Room is Figure of Map-Room-0a.
 
 Instead of going south in the Map Room:
 	now time-traveling-south is true;
-	[continue the action.]
 
 Part - Library
 
@@ -469,8 +471,6 @@ Book - Gernsback
 Gernsback is a person.
 Gernsback is in the Library.
 
-
-
 Volume - Things
 
 Book - Orrery
@@ -501,7 +501,8 @@ Time Travel South begins when time-traveling-south is true.
 
 When Time Travel South begins:	
 	say "TIME TRAVEL SOUTH BEGINS.";
-	display Figure of Time-Travel;
+	if graphics-mode is true:
+		display Figure of Time-Travel;
 	now time-traveling-south is false;
 
 Time Travel South ends when time-traveling-south is false.
@@ -518,7 +519,8 @@ Time Travel North begins when time-traveling-north is true.
 
 When Time Travel North begins:	
 	say "TIME TRAVEL NORTH BEGINS.";
-	display Figure of Time-Travel;
+	if graphics-mode is true:
+		display Figure of Time-Travel;
 	now time-traveling-north is false;
 
 Time Travel North ends when time-traveling-north is false.
