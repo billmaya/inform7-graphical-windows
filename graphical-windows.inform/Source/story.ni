@@ -2,7 +2,7 @@ The story title is "Graphical Windows".
 The story author is "Bill Maya".
 The story headline is "[if text-and-graphics-ui is false]A Non-Interactive Window Experiment[otherwise]A Text & Graphic Mode Window Experiment".
 
-[WORDS 3131]
+[WORDS 3250]
 
 Volume - Setup
 
@@ -410,8 +410,9 @@ The description of the Map Room is "This is a large room whose walls are covered
 The place of the Map Room is past.
 The illustration of Map Room is Figure of Map-Room-0a.
 
-Before going south in the Map Room:
-	now time-traveling is true.
+Instead of going south in the Map Room:
+	now time-traveling-south is true;
+	[continue the action.]
 
 Part - Library
 
@@ -433,6 +434,9 @@ The Domed Building is a room.
 The Domed Building is south of the Map Room.
 The place of the Domed Building is future.
 The illustration of Domed Building is Figure of Domed-Building-3a.
+
+Instead of going north in the Domed Building:
+	now time-traveling-north is true;
 
 Part - Cavern
 
@@ -483,21 +487,42 @@ The illustration of the book is Figure of Book.
 
 Volume - Scenes
 
-time-traveling is a truth state that varies.
-time-traveling is false.
+time-traveling-south is a truth state that varies.
+time-traveling-south is false.
 
-Book - Time Travel
+time-traveling-north is a truth state that varies.
+time-traveling-north is false.
 
-Time Travel is a recurring scene.
+Book - Time Travel South
 
-Time Travel begins when time-traveling is true.
+Time Travel South is a recurring scene.
 
-When Time Travel begins:
-	now time-traveling is false;
-	say "TIME TRAVEL BEGINS.";
+Time Travel South begins when time-traveling-south is true.
+
+When Time Travel South begins:	
+	say "TIME TRAVEL SOUTH BEGINS.";
 	display Figure of Time-Travel;
+	now time-traveling-south is false;
 
-Time Travel ends when the player is in the Domed Building.
+Time Travel South ends when time-traveling-south is false.
 
-When Time Travel ends:
-	say "TIME TRAVEL ENDS."
+When Time Travel South ends:
+	say "TIME TRAVEL SOUTH ENDS.";
+	move the player to the Domed Building;
+
+Book - Time Travel North
+
+Time Travel North is a recurring scene.
+
+Time Travel North begins when time-traveling-north is true.
+
+When Time Travel North begins:	
+	say "TIME TRAVEL NORTH BEGINS.";
+	display Figure of Time-Travel;
+	now time-traveling-north is false;
+
+Time Travel North ends when time-traveling-north is false.
+
+When Time Travel North ends:
+	say "TIME TRAVEL NORTH ENDS.";
+	move the player to the Map Room;
