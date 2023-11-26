@@ -2,7 +2,7 @@ The story title is "Graphical Windows".
 The story author is "Bill Maya".
 The story headline is "[if text-and-graphics-ui is false]A Non-Interactive Window Experiment[otherwise]A Text & Graphic Mode Window Experiment".
 
-[WORDS 3271]
+[WORDS 3397]
 
 Volume - Setup
 
