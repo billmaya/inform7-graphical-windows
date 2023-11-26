@@ -19,7 +19,7 @@ Part - Windows
 Chapter - Setup
 
 debug-mode is a truth state that varies.
-debug-mode is false.
+debug-mode is true.
 
 text-and-graphics-ui is a truth state that varies.
 text-and-graphics-ui is true.
@@ -236,8 +236,33 @@ Request graphics mode is an action out of world.
 Report request graphics mode: 
 	if graphics-mode is false:
 		now graphics-mode is true;
+		[Close all sub-windows]
+		close debug-info window;
+		close debug-title window;
+		close character-topics window;
+		close title-topics window;
+		close list-characters window;
+		close title-characters window;
+		close list-inventory window;
+		close title-inventory window;
+		[Re-open all sub windows]
+		open right-sidebar window; 
+		if graphics-mode is true:
+			open graphics-upper-right window;
+			refresh the graphics-upper-right window;
+		open title-inventory window;
+		open list-inventory window;
+		open title-characters window;
+		open list-characters window;
+		open title-topics window;
+		open character-topics window;
+		if debug-mode is true:
+			open debug-title window;
+			open debug-info window;
+			follow Update Debug rule;
 	otherwise:
 		now graphics-mode is false;
+		close graphics-upper-right window;
 	follow Update Debug rule.
 
 Understand "graphics" as request graphics mode.
