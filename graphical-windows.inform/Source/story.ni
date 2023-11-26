@@ -298,7 +298,8 @@ Every turn (this is the Refresh Windows rule):
 		refresh the title-topics window;
 		refresh the character-topics window;
 		refresh the list-inventory window;
-		refresh the graphics-upper-right window;
+		if graphics-mode is true:
+			refresh the graphics-upper-right window;
 
 Chapter - Debug
 
