@@ -2,7 +2,7 @@ The story title is "Graphical Windows".
 The story author is "Bill Maya".
 The story headline is "[if text-and-graphics-ui is false]A Non-Interactive Window Experiment[otherwise]A Text & Graphic Mode Window Experiment".
 
-[WORDS 3303]
+[WORDS 3271]
 
 Volume - Setup
 
@@ -19,7 +19,7 @@ Part - Windows
 Chapter - Setup
 
 debug-mode is a truth state that varies.
-debug-mode is true.
+debug-mode is false.
 
 text-and-graphics-ui is a truth state that varies.
 text-and-graphics-ui is true.
@@ -313,25 +313,16 @@ When play begins:
 		draw Figure of Cystoidea in the map window at x 630 and y 30 scaled to width 275 and height 400;
 		focus main window;
 	otherwise:
-		if graphics-mode is false:
-			open right-sidebar window;
-			open title-inventory window;
-			open list-inventory window;
-			open title-characters window;
-			open list-characters window;
-			open title-topics window;
-			open character-topics window;
-		otherwise:
-			open right-sidebar window;
+		open right-sidebar window;
+		if graphics-mode is true:
 			open graphics-upper-right window;
-			open title-inventory window;
-			open list-inventory window;
-			open title-characters window;
-			open list-characters window;
-			open title-topics window;
-			open character-topics window;
 			refresh the graphics-upper-right window;
-			focus main window;
+		open title-inventory window;
+		open list-inventory window;
+		open title-characters window;
+		open list-characters window;
+		open title-topics window;
+		open character-topics window;
 		if debug-mode is true:
 			open debug-title window;
 			open debug-info window;
