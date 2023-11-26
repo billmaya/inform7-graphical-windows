@@ -168,6 +168,33 @@ Rule for refreshing the graphics-upper-right window:
 		if the place of the location of the player is past, draw Figure of London-1895 in graphics-upper-right window;
 		if the place of the location of the player is future, draw Figure of 802701 in graphics-upper-right window;
 	focus main window;
+	
+Restore Graphics is a rulebook.
+A restore graphics rule:
+	[Close all sub-windows]
+	close debug-info window;
+	close debug-title window;
+	close character-topics window;
+	close title-topics window;
+	close list-characters window;
+	close title-characters window;
+	close list-inventory window;
+	close title-inventory window;
+	[Re-open all sub windows]
+	open right-sidebar window; 
+	if graphics-mode is true:
+		open graphics-upper-right window;
+		refresh the graphics-upper-right window;
+	open title-inventory window;
+	open list-inventory window;
+	open title-characters window;
+	open list-characters window;
+	open title-topics window;
+	open character-topics window;
+	if debug-mode is true:
+		open debug-title window;
+		open debug-info window;
+		follow Update Debug rule;
 
 Book - Status Line
 
@@ -236,30 +263,7 @@ Request graphics mode is an action out of world.
 Report request graphics mode: 
 	if graphics-mode is false:
 		now graphics-mode is true;
-		[Close all sub-windows]
-		close debug-info window;
-		close debug-title window;
-		close character-topics window;
-		close title-topics window;
-		close list-characters window;
-		close title-characters window;
-		close list-inventory window;
-		close title-inventory window;
-		[Re-open all sub windows]
-		open right-sidebar window; 
-		if graphics-mode is true:
-			open graphics-upper-right window;
-			refresh the graphics-upper-right window;
-		open title-inventory window;
-		open list-inventory window;
-		open title-characters window;
-		open list-characters window;
-		open title-topics window;
-		open character-topics window;
-		if debug-mode is true:
-			open debug-title window;
-			open debug-info window;
-			follow Update Debug rule;
+		follow the restore graphics rules;
 	otherwise:
 		now graphics-mode is false;
 		close graphics-upper-right window;
